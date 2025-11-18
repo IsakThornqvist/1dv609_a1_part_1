@@ -64,5 +64,16 @@ describe('Password class, test suite', () => {
 
     })
 
+    test('missing_numbers_in_password_should_throw_an_error', () => {
+        // Arrange
+        const passwordWithOutNumber = new Password('superSecretPassword')
+
+        // Act
+        const result = passwordWithOutNumber.getPasswordHash()
+
+        // Assert
+        
+    })
+
     //Add your tests here
 })
