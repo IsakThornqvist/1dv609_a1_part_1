@@ -16,6 +16,17 @@ import { Password } from '../src/Correct'
 describe('Password class, test suite', () => {
     //put constants here to increase readability
     
+    beforeEach(() => {
+        password = new Password()
+    })
 
+        test('getPassWordHash_should_return_the_hashed_password', () => {
+        
+            const superSecretPassword = 'secret123'
+
+            const afterHash = superSecretPassword.getPasswordHash()
+
+            expect(afterHash).not.toBe(superSecretPassword)
+    });
     //Add your tests here
 });
