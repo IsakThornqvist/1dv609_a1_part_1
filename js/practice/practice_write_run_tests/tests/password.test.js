@@ -15,7 +15,9 @@
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
-    
+    const superSecretPassword = 'secret123password123'
+
+
     beforeEach(() => {
         //password = new Password()
     })
@@ -23,7 +25,6 @@ describe('Password class, test suite', () => {
         test('getPassWordHash_should_return_the_hashed_password', () => {
         
             // Arrange
-            const superSecretPassword = 'secret123password123'
             const password = new Password(superSecretPassword)
 
             // Act
@@ -35,11 +36,13 @@ describe('Password class, test suite', () => {
 
 
     test('spaces_should_be_removed_from_the_start_and_the_end_of_the_password', () => {
-        const superSecretPassword = ' secret123password123 '
-        const password = new Password(superSecretPassword)
+        
+        const superSecretPasswordWithSpaces = new Password(' secret123password123 ')
+
+        const passwordNoSpaces = new Password('secret123password123')
 
 
-        expect(password).toBe('secret123password123')
+        expect(passwordNoSpaces.isPasswordSame(superSecretPasswordWithSpaces)).toBe(true)
 
 
     })
