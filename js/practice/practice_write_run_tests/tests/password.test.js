@@ -11,7 +11,7 @@
 // import { Password } from '../src/BugVeryShort'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
-import { Password } from '../src/Correct'
+ import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
@@ -22,11 +22,14 @@ describe('Password class, test suite', () => {
 
         test('getPassWordHash_should_return_the_hashed_password', () => {
         
+            // Arrange
             const superSecretPassword = 'secret123password123'
             const password = new Password(superSecretPassword)
 
+            // Act
             const afterHash = password.getPasswordHash()
 
+            // Assert
             expect(afterHash).not.toBe(superSecretPassword)
     })
     //Add your tests here
