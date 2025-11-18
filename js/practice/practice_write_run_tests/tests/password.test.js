@@ -17,16 +17,17 @@ describe('Password class, test suite', () => {
     //put constants here to increase readability
     
     beforeEach(() => {
-        password = new Password()
+        //password = new Password()
     })
 
         test('getPassWordHash_should_return_the_hashed_password', () => {
         
-            const superSecretPassword = 'secret123'
+            const superSecretPassword = 'secret123password123'
+            const password = new Password(superSecretPassword)
 
-            const afterHash = superSecretPassword.getPasswordHash()
+            const afterHash = password.getPasswordHash()
 
             expect(afterHash).not.toBe(superSecretPassword)
-    });
+    })
     //Add your tests here
 });
