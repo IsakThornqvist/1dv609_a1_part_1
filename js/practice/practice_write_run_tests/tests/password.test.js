@@ -32,5 +32,17 @@ describe('Password class, test suite', () => {
             // Assert
             expect(afterHash).not.toBe(superSecretPassword)
     })
+
+
+    test('spaces_should_be_removed_from_the_start_and_the_end_of_the_password', () => {
+        const superSecretPassword = ' secret123password123 '
+        const password = new Password(superSecretPassword)
+
+
+        expect(password).toBe('secret123password123')
+
+
+    })
+
     //Add your tests here
-});
+})
