@@ -66,13 +66,13 @@ describe('Password class, test suite', () => {
 
     test('missing_numbers_in_password_should_throw_an_error', () => {
         // Arrange
-        const passwordWithOutNumber = new Password('superSecretPassword')
+        const passwordWithOutNumber = 'superSecretPassword'
 
         // Act
-        const result = passwordWithOutNumber.getPasswordHash()
-
         // Assert
-        
+        expect(() => {
+            new Password(passwordWithOutNumber)
+        }).toThrow('No number found')
     })
 
     //Add your tests here
