@@ -75,5 +75,15 @@ describe('Password class, test suite', () => {
         }).toThrow('No number found')
     })
 
+    test('password_length_less_than_12_is_not_allowed', () => {
+        // Arrange
+        const passwordToShort = 'shortPW1'
+
+        // Act
+        // Assert
+        expect(() => {
+            new Password(passwordToShort)
+        }).toThrow('Too short password')
+    })
     //Add your tests here
 })
