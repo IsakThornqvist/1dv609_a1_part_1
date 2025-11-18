@@ -2,8 +2,8 @@
 // Select one of the Password versions to test
 
 // import { Password } from '../src/BugDoesNotHash'
-// import { Password } from '../src/BugDoesNotTrim'
-// import { Password } from '../src/BugisPasswordAlwaysSame'
+ //import { Password } from '../src/BugDoesNotTrim'
+ //import { Password } from '../src/BugisPasswordAlwaysSame'
 // import { Password } from '../src/BugMissingNumberCheck'
 // import { Password } from '../src/BugMissingPasswordCheck'
 // import { Password } from '../src/BugNeverContainsNumbers'
@@ -60,7 +60,7 @@ describe('Password class, test suite', () => {
         const result = password1.isPasswordSame(password2)
 
         // Assert
-        expect(result).toBe(true)
+        expect(result).toBe(false)
 
     })
 
