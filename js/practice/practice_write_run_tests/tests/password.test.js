@@ -5,13 +5,13 @@
  //import { Password } from '../src/BugDoesNotTrim'
  //import { Password } from '../src/BugisPasswordAlwaysSame'
 // import { Password } from '../src/BugMissingNumberCheck'
-// import { Password } from '../src/BugMissingPasswordCheck'
-// import { Password } from '../src/BugNeverContainsNumbers'
-// import { Password } from '../src/BugToShortPassword'
+ //import { Password } from '../src/BugMissingPasswordCheck'
+ //import { Password } from '../src/BugNeverContainsNumbers'
+ import { Password } from '../src/BugToShortPassword'
 // import { Password } from '../src/BugVeryShort'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
- import { Password } from '../src/Correct'
+ //import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
@@ -85,5 +85,26 @@ describe('Password class, test suite', () => {
             new Password(passwordToShort)
         }).toThrow('Too short password')
     })
+
+    // never contains number
+
+    // to short password
+    test('isTooShort_should_not_allow_a_password_with_less_than_12_characters', () => {
+        // Arrange
+        const passwordElevenCharacters = new Password('secret12345')
+
+        // Act
+        expect(() => {
+            new Password(passwordElevenCharacters)
+        }).toThrow('Too short password')
+
+        // Assert
+    })
+
+    // very short
+
+    // wrong hashing algo
+
+    // wrong message
     //Add your tests here
 })
