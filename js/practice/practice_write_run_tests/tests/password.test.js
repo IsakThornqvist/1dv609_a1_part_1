@@ -50,5 +50,19 @@ describe('Password class, test suite', () => {
 
     })
 
+
+    test('isPasswordSame_should_return_true_if_both_passwords_are_the_same', () => {
+        // Arrange
+        const password1 = new Password('supersecretpassword123')
+        const password2 = new Password('supersecretpassword1234')
+
+        // Act
+        const result = password1.isPasswordSame(password2)
+
+        // Assert
+        expect(result).toBe(true)
+
+    })
+
     //Add your tests here
 })
