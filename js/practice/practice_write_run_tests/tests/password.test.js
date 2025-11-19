@@ -1,17 +1,21 @@
 
 // Select one of the Password versions to test
 
-// import { Password } from '../src/BugDoesNotHash'
- //import { Password } from '../src/BugDoesNotTrim'
- //import { Password } from '../src/BugisPasswordAlwaysSame'
-// import { Password } from '../src/BugMissingNumberCheck'
- //import { Password } from '../src/BugMissingPasswordCheck'
- // import { Password } from '../src/BugNeverContainsNumbers'
- // import { Password } from '../src/BugToShortPassword'
-// import { Password } from '../src/BugVeryShort'
+ import { Password } from '../src/Correct'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
-  import { Password } from '../src/Correct'
+
+// Maybe?
+// import { Password } from '../src/BugNeverContainsNumbers'
+
+// Done
+ // import { Password } from '../src/BugDoesNotHash'
+ // import { Password } from '../src/BugDoesNotTrim'
+ //import { Password } from '../src/BugisPasswordAlwaysSame'
+ // import { Password } from '../src/BugMissingNumberCheck'
+ //import { Password } from '../src/BugMissingPasswordCheck'
+ // import { Password } from '../src/BugToShortPassword'
+ //import { Password } from '../src/BugVeryShort'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
@@ -63,17 +67,29 @@ describe('Password class, test suite', () => {
         expect(result).toBe(false)
 
     })
+// negative test
+test('the_password_without_numbers_should_throw_an_error', () => {
+    // Arrange
+    const passwordWithOutNumber = 'superSecretPassword'
 
-    test('missing_numbers_in_password_should_throw_an_error', () => {
-        // Arrange
-        const passwordWithOutNumber = 'superSecretPassword'
+    // Act
+    // Assert
+    expect(() => {
+        new Password(passwordWithOutNumber)
+    }).toThrow('No number found')
+})
 
-        // Act
-        // Assert
-        expect(() => {
-            new Password(passwordWithOutNumber)
-        }).toThrow('No number found')
-    })
+// positive test
+test('the_password_with_numbers_should_throw_an_error', () => {
+    // Arrange
+    const passwordWithOutNumber = 'superSecretPassword123'
+
+    // Act
+    // Assert
+    expect(() => {
+        new Password(passwordWithOutNumber)
+    }).not.toThrow('No number found')
+})
 
     test('password_length_less_than_12_is_not_allowed', () => {
         // Arrange
@@ -86,11 +102,10 @@ describe('Password class, test suite', () => {
         }).toThrow('Too short password')
     })
 
+
     // never contains number done 3 tests fail might need to fix later
 
-    // to short password done
 
-    // very short
 
     // wrong hashing algo
 
