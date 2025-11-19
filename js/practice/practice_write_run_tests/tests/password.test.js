@@ -1,7 +1,7 @@
 
 // Select one of the Password versions to test
 
-  import { Password } from '../src/Correct'
+  //import { Password } from '../src/Correct'
   //import { Password } from '../src/BugWrongHashingAlgorithm'
 
 // Maybe?
@@ -11,7 +11,7 @@
 // import { Password } from '../src/BugWrongMessage'
  // import { Password } from '../src/BugDoesNotHash'
  // import { Password } from '../src/BugDoesNotTrim'
-// import { Password } from '../src/BugisPasswordAlwaysSame'
+ import { Password } from '../src/BugisPasswordAlwaysSame'
  // import { Password } from '../src/BugMissingNumberCheck'
  // import { Password } from '../src/BugMissingPasswordCheck'
  // import { Password } from '../src/BugToShortPassword'
