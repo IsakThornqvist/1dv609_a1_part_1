@@ -1,19 +1,19 @@
 
 // Select one of the Password versions to test
 
- import { Password } from '../src/Correct'
- // import { Password } from '../src/BugWrongHashingAlgorithm'
+  //import { Password } from '../src/Correct'
+  import { Password } from '../src/BugWrongHashingAlgorithm'
 
 // Maybe?
-//import { Password } from '../src/BugNeverContainsNumbers'
+// import { Password } from '../src/BugNeverContainsNumbers'
 
 // Done
 // import { Password } from '../src/BugWrongMessage'
  // import { Password } from '../src/BugDoesNotHash'
  // import { Password } from '../src/BugDoesNotTrim'
- //import { Password } from '../src/BugisPasswordAlwaysSame'
+// import { Password } from '../src/BugisPasswordAlwaysSame'
  // import { Password } from '../src/BugMissingNumberCheck'
- //import { Password } from '../src/BugMissingPasswordCheck'
+ // import { Password } from '../src/BugMissingPasswordCheck'
  // import { Password } from '../src/BugToShortPassword'
  //import { Password } from '../src/BugVeryShort'
 
@@ -26,7 +26,7 @@ describe('Password class, test suite', () => {
         //password = new Password()
     })
 
-        test('getPassWordHash_should_return_the_hashed_password', () => {
+        test('getPasswordHash Should Return Hashed Password For Valid Password', () => {
         
             // Arrange
             const password = new Password(secretPassword)
@@ -39,7 +39,7 @@ describe('Password class, test suite', () => {
     })
 
 
-    test('spaces_should_be_removed_from_the_start_and_the_end_of_the_password', () => {
+    test('Constructor Should Remove Spaces From StartAndEnd Of Password', () => {
         
         // Arrange
         const passwordWithSpaces = new Password(' secret123password123 ')
@@ -55,7 +55,7 @@ describe('Password class, test suite', () => {
     })
 
 
-    test('isPasswordSame_should_return_true_if_both_passwords_are_the_same', () => {
+    test('isPasswordSame Should Return False For Different Passwords', () => {
         // Arrange
         const password1 = new Password('supersecretpassword123')
         const password2 = new Password('supersecretpassword1234')
@@ -65,10 +65,20 @@ describe('Password class, test suite', () => {
 
         // Assert
         expect(result).toBe(false)
-
     })
+
+    test('Throw An Exception When Comparing A Password Instance With A Non-Password Instance', () => {
+        // Arrange
+        const password = new Password(secretPassword)
+        const nonInstancePassword = 'secret123password123'
+
+        // Act
+        // Assert
+        expect(() => password.isPasswordSame(nonInstancePassword)).toThrow('Invalid argument')
+    })
+
 // negative test
-test('the_password_without_numbers_should_throw_an_error', () => {
+test('Constructor Should Throw Error For Password Without Numbers', () => {
     // Arrange
     const passwordWithOutNumber = 'superSecretPassword'
 
@@ -80,18 +90,18 @@ test('the_password_without_numbers_should_throw_an_error', () => {
 })
 
 // positive test
-test('the_password_with_numbers_should_throw_an_error', () => {
+test('Constructor Should Not Throw An Error For Passwords With Numbers', () => {
     // Arrange
-    const passwordWithOutNumber = 'superSecretPassword123'
+    const passwordWithNumber = 'superSecretPassword123'
 
     // Act
     // Assert
     expect(() => {
-        new Password(passwordWithOutNumber)
+        new Password(passwordWithNumber)
     }).not.toThrow('No number found')
 })
 
-    test('password_length_less_than_12_is_not_allowed', () => {
+    test('Constructor Should Throw An Error For Passwords Shorter Than 12', () => {
         // Arrange
         const passwordToShort = 'shortPW1234'
 
@@ -102,11 +112,11 @@ test('the_password_with_numbers_should_throw_an_error', () => {
         }).toThrow('Too short password')
     })
 
-test('wrong_hashing_algorithm_test', () => {
+test('getPasswordHash Should Return Number Greater Than 7 For Valid Password', () => {
 
     // Arrange
   const password = new Password(secretPassword)
-  
+
   // Act
   const afterHash = password.getPasswordHash()
 
