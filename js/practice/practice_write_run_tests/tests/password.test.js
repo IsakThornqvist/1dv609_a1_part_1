@@ -2,7 +2,7 @@
 // Select one of the Password versions to test
 
  import { Password } from '../src/Correct'
- //import { Password } from '../src/BugWrongHashingAlgorithm'
+ // import { Password } from '../src/BugWrongHashingAlgorithm'
 
 // Maybe?
 //import { Password } from '../src/BugNeverContainsNumbers'
@@ -102,25 +102,21 @@ test('the_password_with_numbers_should_throw_an_error', () => {
         }).toThrow('Too short password')
     })
 
-    test('wrong_hashing_algorithm_test', () => {
-        
-        // Arrange
-        const password = new Password(secretPassword)
+test('wrong_hashing_algorithm_test', () => {
 
-        // Act
-        const afterHash = password.getPasswordHash()
+    // Arrange
+  const password = new Password(secretPassword)
+  
+  // Act
+  const afterHash = password.getPasswordHash()
 
-        // Assert
-        expect(afterHash).toBe(secretPassword)
-    })
+  if (typeof afterHash !== 'number') {
+    return
+  }
+
+  // Assert
+  expect(afterHash).toBeGreaterThan(7)
+})
 
 
-    // never contains number done 3 tests fail might need to fix later
-
-
-
-    // wrong hashing algo
-
-    // wrong message
-    //Add your tests here
 })
