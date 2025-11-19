@@ -33,4 +33,9 @@ describe('SSNHelpe Tests', () => {
         expect(result).toBe(false)
     })
 
+    test('Incorrect format test', () => {
+        const result = ssnHelper.isCorrectFormat('123456-7890')
+
+        expect(result).toBe(false)
+    })
 });
