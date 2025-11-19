@@ -1,8 +1,8 @@
 
 // Select one of the Password versions to test
 
-  //import { Password } from '../src/Correct'
-  import { Password } from '../src/BugWrongHashingAlgorithm'
+  import { Password } from '../src/Correct'
+  //import { Password } from '../src/BugWrongHashingAlgorithm'
 
 // Maybe?
 // import { Password } from '../src/BugNeverContainsNumbers'
