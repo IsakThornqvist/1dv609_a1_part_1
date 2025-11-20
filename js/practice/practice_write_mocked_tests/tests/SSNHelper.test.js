@@ -1,10 +1,13 @@
- import { SSNHelper } from '../src/correct/SSNHelper'; 
+ // import { SSNHelper } from '../src/correct/SSNHelper'; 
 
-// import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'; 
+ //import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'; 
 //import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'; 
+
+// Maybe
 //import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'; 
-//import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'; 
-//import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'; 
+
+import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'; 
+// import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'; 
 
 
 
@@ -12,6 +15,9 @@
 
 describe('SSNHelpe Tests', () => {
     let ssnHelper
+
+    const correctFormat = '020304-1065'
+    const incorrectFormat = '123456-78901'
 
     beforeEach(() => {
         ssnHelper = new SSNHelper()
@@ -41,10 +47,24 @@ describe('SSNHelpe Tests', () => {
         }
     })
 
-    test('Incorrect format test', () => {
-        const result = ssnHelper.isCorrectFormat('123456-7890')
-        const ssnRegex = /^\d{6}-\d{4}$/;
+        test('isCorrectFormat should return true if format is correct', () => {
+        const result = ssnHelper.isCorrectFormat(correctFormat)
 
-        expect.stringMatching(result | ssnRegex)
+        expect(result).toBeTruthy()
     })
-});
+
+        test('isCorrectFormat should return false if format is wrong', () => {
+        const result = ssnHelper.isCorrectFormat(incorrectFormat)
+
+        expect(result).toBeFalsy()
+    })
+
+    test('isCorrectLength should only allow the string input to equal 11', () => {
+            const result = ssnHelper.isCorrectLength('020304-106527654')
+            if(result.length !== 11) {
+                expect(result).toBeFalsy()
+            }
+    })
+
+
+})
