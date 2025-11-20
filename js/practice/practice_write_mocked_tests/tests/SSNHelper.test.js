@@ -1,4 +1,4 @@
- // import { SSNHelper } from '../src/correct/SSNHelper'; 
+  import { SSNHelper } from '../src/correct/SSNHelper'; 
 
  //import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'; 
 //import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowMonth0'; 
@@ -6,7 +6,7 @@
 // Maybe
 //import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'; 
 
-import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'; 
+//import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'; 
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'; 
 
 
@@ -59,11 +59,19 @@ describe('SSNHelpe Tests', () => {
         expect(result).toBeFalsy()
     })
 
-    test('isCorrectLength should only allow the string input to equal 11', () => {
-            const result = ssnHelper.isCorrectLength('020304-106527654')
-            if(result.length !== 11) {
-                expect(result).toBeFalsy()
-            }
+    test('isCorrectLength should return true for strings with exactly 11 characters', () => {
+            const result = ssnHelper.isCorrectLength(correctFormat)
+            expect(result).toBeTruthy()
+    })
+
+    test('isCorrectLength should return false for strings that are not 11 characters', () => {
+            const result = ssnHelper.isCorrectLength(incorrectFormat)
+            expect(result).toBeFalsy()
+    })
+
+
+    test('luhnisCorrect returns true for SSNs with valid Luhn checksum', () => {
+
     })
 
 
