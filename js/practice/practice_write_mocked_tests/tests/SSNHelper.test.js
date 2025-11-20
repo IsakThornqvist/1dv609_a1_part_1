@@ -16,7 +16,7 @@
 describe('SSNHelpe Tests', () => {
     let ssnHelper
 
-    const correctFormat = '020304-1065'
+    const correctFormat = '890201-3286'
     const incorrectFormat = '123456-78901'
 
     beforeEach(() => {
@@ -71,7 +71,9 @@ describe('SSNHelpe Tests', () => {
 
 
     test('luhnisCorrect returns true for SSNs with valid Luhn checksum', () => {
-
+        const result = ssnHelper.luhnisCorrect(correctFormat)
+        
+        expect(result).toBeTruthy()
     })
 
 
