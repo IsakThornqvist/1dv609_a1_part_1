@@ -1,4 +1,4 @@
-import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
+ import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
@@ -15,13 +15,13 @@ describe('SwedishSocialSecurityNumber Tests', () => {
     const correctFormat = '890201-3286'
     const incorrectFormat = '123456-78901'
     
-    beforeEach(() => {
+/*     beforeEach(() => {
         swedishSocialSecurityNumber = new SwedishSocialSecurityNumber()
 
         mockHelper = {
-            
+
         }
-    })
+    }) */
 
     test('Contructor should return error when ', () => {
 
