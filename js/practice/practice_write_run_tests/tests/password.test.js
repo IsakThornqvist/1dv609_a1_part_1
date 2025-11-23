@@ -49,7 +49,7 @@ describe('Password class, test suite', () => {
         const result = passwordNoSpaces.isPasswordSame(passwordWithSpaces)
 
         // Assert
-        expect(result).toBe(true)
+        expect(result).toBeTruthy()
 
     })
 
@@ -63,7 +63,7 @@ describe('Password class, test suite', () => {
         const result = password1.isPasswordSame(password2)
 
         // Assert
-        expect(result).toBe(false)
+        expect(result).toBeFalsy()
     })
 
     test('Throw An Exception When Comparing A Password Instance With A Non-Password Instance', () => {
