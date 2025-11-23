@@ -24,7 +24,7 @@ describe('SSNHelpe Tests', () => {
     })
 
 
-    test('Allow days to be between 1 and 31', () => {
+    test('isValidDay Should Return True For Days Between 1 And 31', () => {
         for (let days = 1; days <= 31; days++) {
             const result = ssnHelper.isValidDay(days)
             expect(result).toBeTruthy()
@@ -32,15 +32,14 @@ describe('SSNHelpe Tests', () => {
     })
 
 
-    // kolla senare
-    test('Return false if the month is invalid', () => {
+    test('isValidMonth Should Return False For Month Below 1', () => {
 
         const result = ssnHelper.isValidMonth('0')
 
         expect(result).toBe(false)
     })
 
-    test('Return true if the month is between 1 and 12', () => {
+    test('isValidMonth Should Return True For Months Between 1 And 12', () => {
         for (let month = 1; month < 12; month++) {
             const result = ssnHelper.isValidMonth(month)
             expect(result).toBeTruthy()
@@ -72,7 +71,7 @@ describe('SSNHelpe Tests', () => {
 
     test('luhnisCorrect returns true for SSNs with valid Luhn checksum', () => {
         const result = ssnHelper.luhnisCorrect(correctFormat)
-        
+
         expect(result).toBeTruthy()
     })
 
