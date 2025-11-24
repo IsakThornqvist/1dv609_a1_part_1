@@ -1,8 +1,9 @@
-import { jest } from '@jest/globals';
+import { expect, jest } from '@jest/globals';
 
-import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
+ import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
+
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberWrongYear'
 
@@ -16,6 +17,7 @@ describe('SwedishSocialSecurityNumber Tests', () => {
 
     const correctFormat = '890201-3286'
     const incorrectFormat = '123456-78901'
+    const withSpaces = ' 890201-3286 '
     
      beforeEach(() => {
          
@@ -29,7 +31,8 @@ describe('SwedishSocialSecurityNumber Tests', () => {
             }
     }) 
 
-    test('should throw error if length is not 11 ', () => {
+    // KOLLA IGEN
+    test('isCorrectLength should throw error if length is not 11 ', () => {
         // Arrange
         ssnHelperMock.isCorrectLength.mockReturnValue(false)
         ssnHelperMock.isCorrectFormat.mockReturnValue(true)
@@ -43,6 +46,13 @@ describe('SwedishSocialSecurityNumber Tests', () => {
     })
 
 
+    test('constructor trims input string', () => {
+        
+    const result = new SwedishSocialSecurityNumber(withSpaces, ssnHelperMock)
+
+    expect(result.getMonth()).toBe('02')
+
+    })
 
 
 
