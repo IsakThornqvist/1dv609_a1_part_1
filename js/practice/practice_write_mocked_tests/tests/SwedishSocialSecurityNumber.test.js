@@ -2,7 +2,7 @@ import { expect, jest } from '@jest/globals';
 
  import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
-//import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
+// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberWrongYear'
 
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
@@ -50,7 +50,7 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         
     const result = new SwedishSocialSecurityNumber(withSpaces, ssnHelperMock)
 
-    expect(result.getMonth()).toBe('02')
+    expect(result.getSerialNumber()).toBe('3286')
 
     })
 
@@ -93,12 +93,5 @@ describe('SwedishSocialSecurityNumber Tests', () => {
             new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
         }).toThrow('Invalid month in SSN')
     })
-
-    test('getSerialNumber', () => {
-    const result = new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
-
-    expect(result.getSerialNumber()).toBe('3286')
-    })
-
 
 })
