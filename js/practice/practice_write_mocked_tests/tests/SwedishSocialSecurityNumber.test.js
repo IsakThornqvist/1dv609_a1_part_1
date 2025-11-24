@@ -70,16 +70,34 @@ describe('SwedishSocialSecurityNumber Tests', () => {
 
     // for coverage
     test('incorrect format', () => {
-        
+        ssnHelperMock.isCorrectFormat.mockReturnValue(false)
+
+        expect(() => {
+            new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
+        }).toThrow('Incorrect format, must be: YYMMDD-XXXX')
     })
+
     test('invalid month getMonth', () => {
+        ssnHelperMock.isValidMonth.mockReturnValue(false)
 
+        expect(() => {
+            new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
+        }).toThrow("Invalid month in SSN")
     })
+
     test('invalid month getDay', () => {
+        ssnHelperMock.isValidDay.mockReturnValue(false)
 
+
+        expect(() => {
+            new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
+        }).toThrow('Invalid month in SSN')
     })
-    test('getSerialNumber', () => {
 
+    test('getSerialNumber', () => {
+    const result = new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
+
+    expect(result.getSerialNumber()).toBe('3286')
     })
 
 
