@@ -10,18 +10,20 @@
 //NOTE THESE TESTS SHOULD NOT BE DEPENDENT ON SSNHelper BUT USE MOCKING
 describe('SwedishSocialSecurityNumber Tests', () => {
     let swedishSocialSecurityNumber
+    let ssnHelperMock
 
 
     const correctFormat = '890201-3286'
     const incorrectFormat = '123456-78901'
     
-/*     beforeEach(() => {
-        swedishSocialSecurityNumber = new SwedishSocialSecurityNumber()
-
-        mockHelper = {
-
-        }
-    }) */
+     beforeEach(() => {
+         
+         ssnHelperMock = {
+             correctLength: jest.fn()
+             
+            }
+            swedishSocialSecurityNumber = new SwedishSocialSecurityNumber(ssnHelperMock)
+    }) 
 
     test('Contructor should return error when ', () => {
 
