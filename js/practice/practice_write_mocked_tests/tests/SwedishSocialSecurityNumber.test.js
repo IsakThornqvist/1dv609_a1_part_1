@@ -69,7 +69,7 @@ describe('SwedishSocialSecurityNumber Tests', () => {
     })
 
     // for coverage
-    test('incorrect format', () => {
+    test('constructor should throw an error if format is incorrect', () => {
         ssnHelperMock.isCorrectFormat.mockReturnValue(false)
 
         expect(() => {
@@ -77,7 +77,7 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         }).toThrow('Incorrect format, must be: YYMMDD-XXXX')
     })
 
-    test('invalid month getMonth', () => {
+    test('constructor should throw an error if isValidMonth is false', () => {
         ssnHelperMock.isValidMonth.mockReturnValue(false)
 
         expect(() => {
@@ -85,7 +85,7 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         }).toThrow("Invalid month in SSN")
     })
 
-    test('invalid month getDay', () => {
+    test('constructor should throw an error if isValidDay is false', () => {
         ssnHelperMock.isValidDay.mockReturnValue(false)
 
 
