@@ -31,11 +31,11 @@ describe('SwedishSocialSecurityNumber Tests', () => {
             }
     }) 
 
-    // KOLLA IGEN
     test('isCorrectLength should throw error if length is not 11 ', () => {
         // Arrange
         ssnHelperMock.isCorrectLength.mockReturnValue(false)
         ssnHelperMock.isCorrectFormat.mockReturnValue(true)
+
 
         // Act
         // Assert
@@ -58,6 +58,28 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         const result = new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
 
         expect(result.getYear()).toBe('89')
+    })
+
+    test('luhnisCorrect should throw error if algorithm is not correct', () => {
+        ssnHelperMock.luhnisCorrect.mockReturnValue(false)
+
+        expect(() => {
+            new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
+        }).toThrow("Invalid SSN according to Luhn's algorithm")
+    })
+
+    // for coverage
+    test('incorrect format', () => {
+        
+    })
+    test('invalid month getMonth', () => {
+
+    })
+    test('invalid month getDay', () => {
+
+    })
+    test('getSerialNumber', () => {
+
     })
 
 
