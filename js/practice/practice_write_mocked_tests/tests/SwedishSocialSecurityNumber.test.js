@@ -3,9 +3,9 @@ import { expect, jest } from '@jest/globals';
  import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
-
-//import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberWrongYear'
+
+// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
 
 
 
@@ -54,7 +54,11 @@ describe('SwedishSocialSecurityNumber Tests', () => {
 
     })
 
+    test('getYear returns first two digits of SSN', () => {
+        const result = new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
+
+        expect(result.getYear()).toBe('89')
+    })
 
 
-    //Add your tests here
 })
