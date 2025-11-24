@@ -1,4 +1,6 @@
- import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
+import { jest } from '@jest/globals';
+
+import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
@@ -9,7 +11,6 @@
 
 //NOTE THESE TESTS SHOULD NOT BE DEPENDENT ON SSNHelper BUT USE MOCKING
 describe('SwedishSocialSecurityNumber Tests', () => {
-    let swedishSocialSecurityNumber
     let ssnHelperMock
 
 
@@ -19,17 +20,30 @@ describe('SwedishSocialSecurityNumber Tests', () => {
      beforeEach(() => {
          
          ssnHelperMock = {
-             correctLength: jest.fn()
+             isCorrectLength: jest.fn(),
+             isCorrectFormat: jest.fn(),
+             isValidMonth: jest.fn(),
+             isValidDay: jest.fn(),
+             luhnisCorrect: jest.fn(),
              
             }
-            swedishSocialSecurityNumber = new SwedishSocialSecurityNumber(ssnHelperMock)
     }) 
 
-    test('Contructor should return error when ', () => {
+    test('should throw error if length is not 11 ', () => {
+        // Arrange
+        ssnHelperMock.isCorrectLength.mockReturnValue(false)
+        ssnHelperMock.isCorrectFormat.mockReturnValue(true)
 
-
-
+        // Act
+        // Assert
+        expect(() => {
+            new SwedishSocialSecurityNumber(correctFormat, ssnHelperMock)
+        }).toThrow('To short, must be 11 characters')
+        
     })
+
+
+
 
 
     //Add your tests here
