@@ -4,8 +4,7 @@ import { expect, jest } from '@jest/globals';
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
 // import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberWrongYear'
-
-// import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
+ //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
 
 
 
@@ -16,7 +15,6 @@ describe('SwedishSocialSecurityNumber Tests', () => {
 
 
     const correctFormat = '890201-3286'
-    const incorrectFormat = '123456-78901'
     const withSpaces = ' 890201-3286 '
     
      beforeEach(() => {
