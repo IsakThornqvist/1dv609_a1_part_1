@@ -58,6 +58,14 @@ describe('SSNHelpe Tests', () => {
         expect(result).toBeFalsy()
     })
 
+    
+    
+    test('luhnisCorrect returns true for SSNs with valid Luhn checksum', () => {
+        const result = ssnHelper.luhnisCorrect(correctFormat)
+        
+        expect(result).toBeTruthy()
+    })
+    
     test('isCorrectLength should return true for strings with exactly 11 characters', () => {
             const result = ssnHelper.isCorrectLength(correctFormat)
             expect(result).toBeTruthy()
@@ -67,13 +75,5 @@ describe('SSNHelpe Tests', () => {
             const result = ssnHelper.isCorrectLength(incorrectFormat)
             expect(result).toBeFalsy()
     })
-
-
-    test('luhnisCorrect returns true for SSNs with valid Luhn checksum', () => {
-        const result = ssnHelper.luhnisCorrect(correctFormat)
-
-        expect(result).toBeTruthy()
-    })
-
-
+    
 })

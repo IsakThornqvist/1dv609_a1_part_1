@@ -121,6 +121,7 @@ test('getPasswordHash Should Return Number Greater Than 7 For Valid Password', (
   // Act
   const afterHash = password.getPasswordHash()
 
+  // prevent errors
   if (typeof afterHash !== 'number') {
     return
   }
