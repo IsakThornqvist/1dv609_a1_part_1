@@ -73,7 +73,9 @@ describe('Password class, test suite', () => {
 
         // Act
         // Assert
-        expect(() => password.isPasswordSame(nonInstancePassword)).toThrow('Invalid argument')
+        expect(() => 
+            password.isPasswordSame(nonInstancePassword
+        )).toThrow('Invalid argument')
     })
 
 // negative test

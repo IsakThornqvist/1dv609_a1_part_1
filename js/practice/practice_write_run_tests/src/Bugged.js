@@ -27,6 +27,7 @@ class Password {
     return pw.length < '12'
   }
 
+  // end of string bug
   #containsNumber(capitalCity) {
     return /\d$/.test(capitalCity)
   }
